@@ -1,11 +1,17 @@
 package com.library2.pages;
 
 import com.library2.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Login_LibraryPage {
+public class Login_LibraryPage extends BasePage{
+
+    //------------------------------------------------------------//
+
+    /** 0. Global objects: */
+    BasePage basePage = new BasePage();
 
 
     //------------------------------------------------------------//
@@ -31,6 +37,16 @@ public class Login_LibraryPage {
 
     //------------------------------------------------------------//
     /** 3. Methods: */
+
+    public void assert_if_student_is_loggedIn() {
+        String actNavigationBarCredentials = basePage.navigationBarDropdown.getText();
+        String expCredentials = "Test Student";
+
+        Assert.assertTrue(
+                "Navigation Bar Dropdown has Different Credentials - FAIL!",
+                actNavigationBarCredentials.contains(expCredentials)
+        );
+    }
 
 
 
