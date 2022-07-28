@@ -9,3 +9,12 @@ Feature: US_001 Login Functionality
     Given  user is on the Login_Library page
     When  user input "<librarianUsername>" with "<librarianPassword>" for librarian
     Then   user should navigate to Dashboard page
+
+
+    Scenario: US001_T02_Login_with_valid_credentials_as_Student
+      Given  user is on the Login_Library page
+      When  user input "<studentUsername>" with "<studentPassword>" for student
+      Then   user should navigate to Dashboard page
+
+
+
