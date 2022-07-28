@@ -1,0 +1,100 @@
+1. Add dependencies into pom.xml file:
+    - Selenium java, 3.141.59
+    - WebdriverManager, 5.1.1
+    - Javafaker, 1.0.2
+    - Cucumber-java, 7.2.3
+    - Cucumber-junit, 7.2.3
+    - Reporting plugin, 7.2.0
+
+2. Add build into pom.xml file:
+<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+
+                    <parallel>methods</parallel>
+                    <threadCount>4</threadCount>
+                    <testFailureIgnore>true</testFailureIgnore>
+
+                    <includes>
+                        <include>*/Runner.java</include>
+                    </includes>
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+3. Add gitignore file to the project
+    /target/
+    /.idea/
+    /*.iml/
+    /out/
+    /.xml/
+
+4. Enable version control integration to GitHub
+
+5. Share the project to the repository on GitHub
+
+6. Create a new file configuration.properties under the project
+
+7. Add properties value to configuration.properties
+    browser=chrome
+    url_qa2=https://library2.cydeo.com/login.html
+
+    librarian_username=librarian1@library
+    librarian_password=qU9mrvur
+
+    student_username=student1@library
+    student_password=d5fv9BtX
+
+8. Create new package com.library2 under java package
+
+9. Create directory "resources" under test package and outside the java package
+
+10. Create new directory "features" under resources directory
+
+11. Create new package "utilities" under library2 package
+    11.1.  Driver class
+    11.2.  ConfigurationReader class
+    11.3.  BrowserUtil class
+
+12. Create new class "Driver" under utilities package
+    12.1.  Create a private constructor Driver()
+    12.2.  Create a private and static WebDriver driver
+    12.3.  Create reusable public static WebDriver getDriver()
+    12.4.  Create reusable public static WebDriver closeDriver()
+
+13.  Create new class "ConfigurationReader" under utilities package
+    13.1.  Create private static Properties object
+    13.2.  Create static block to run first
+    13.3.  Create public static getProperty()
+    13.4.  import java.util.Properties;
+
+14. Create new class "BrowserUtil" under utilities package
+    14.1.  Action methods
+    14.2.  Assertion methods
+    14.3.  Supporting methods
+
+15. Create new package "step_definitions" under library2 package
+
+16. Create new class "Hooks" under step_definitions package
+    16.1. Add Before scenario method
+    16.2. Add After scenario method with taking screenshot for failed scenarios
+
+17. Create new package "runner" under library2 package
+
+18. Create new class "CukesRunner" under runner package
+
+19. Create new class "FailedClassRunner" under runner package
+
+20. Add new package "pages" under library2 package
+
+21. Setup GitHub branches
+
+
+
+
