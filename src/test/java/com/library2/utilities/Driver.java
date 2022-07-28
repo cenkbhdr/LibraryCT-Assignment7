@@ -79,6 +79,15 @@ public class Driver {
     }
 
 
+    public static void closeDriver(){
+        if(driverPool.get() != null){
+            driverPool.get().quit(); // this line will terminate the existing driver session. with using this driver will not be even null
+            driverPool.remove();
+        }
+
+    }
+
+
 
 
 

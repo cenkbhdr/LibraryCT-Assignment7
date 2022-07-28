@@ -1,5 +1,12 @@
 package com.library2.step_definitions;
 
+import com.library2.utilities.Driver;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
 public class Hooks {
 
     /** Use it before from io.cucumber and not from io.junit

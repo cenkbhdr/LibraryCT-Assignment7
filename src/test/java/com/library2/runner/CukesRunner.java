@@ -13,10 +13,11 @@ import org.junit.runner.RunWith;
                     "rerun:target/rerun.txt" ,
                     "me.jvt.cucumber.report.PrettyReports:target/cucumber"
             } ,
-            features = "src/test/resources/features" ,
-            glue = "com/vyTrack/step_definitions" ,
+            features = "src/test/resources/features" , // from content
+            glue = "com/library2/step_definitions" , //from source root
+
             dryRun = false ,
-            tags = "@us154_01"
+            tags = "@us001_t02"
                ,
                 publish = true
     )
