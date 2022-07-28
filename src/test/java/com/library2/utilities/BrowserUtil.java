@@ -15,6 +15,7 @@ public class BrowserUtil {
 
 
 
+
     /** 2. ASSERTION METHODS: */
     public static void switchWindowAndVerify(String expectedInUrl,String expectedTitle){
 
