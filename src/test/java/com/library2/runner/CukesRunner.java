@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
             glue = "com/library2/step_definitions" , //from source root
 
             dryRun = false ,
-            tags = "@us001_t05"
+            tags = "@smoke"
                ,
                 publish = true
     )

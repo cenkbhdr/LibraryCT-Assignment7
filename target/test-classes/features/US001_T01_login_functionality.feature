@@ -27,7 +27,7 @@ Feature: US_001 Login Functionality
     When  user input "<username>" with "<password>"
     Then   user should navigate to Books page as Student
         Examples:
-        | username         | password        |
+        | username         | password          |
         | student1@library |	d5fv9BtX       |
         | student2@library |	zyxa10vg       |
         | student3@library |	rPjgZ86a       |
@@ -61,6 +61,11 @@ Feature: US_001 Login Functionality
           | Student1   |
           | Student2   |
 
+#  # 6. Login with wrong username and correct password
+#  @us001_t06
+#  Scenario: US001_T06_Login_with_wrongUsername_corPassword
+#    When  user input wrong_username with wrong_password
+#    Then  user should  see message "<Sorry, Wrong Email or Password>"
 
 
 
