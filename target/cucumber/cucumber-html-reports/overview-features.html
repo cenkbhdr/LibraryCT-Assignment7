@@ -50,8 +50,8 @@ $(document).ready(function() {
     var chartData = {
         datasets: [{
             data: [
-                14,
-                1,
+                48,
+                0,
                 0,
                 0,
                 0
@@ -93,7 +93,7 @@ $(document).ready(function() {
                         var allData = data.datasets[tooltipItem.datasetIndex].data;
                         var tooltipLabel = data.labels[tooltipItem.index];
                         var tooltipData = allData[tooltipItem.index];
-                        var tooltipPercentage = Math.round(10000 * tooltipData / 15) / 100;
+                        var tooltipPercentage = Math.round(10000 * tooltipData / 48) / 100;
                         return tooltipLabel + ": " + tooltipData + " (" + tooltipPercentage + "%)";
                     }
                 }
@@ -106,8 +106,8 @@ $(document).ready(function() {
     var chartData = {
         datasets: [{
             data: [
-                4,
-                1
+                16,
+                0
             ],
             backgroundColor: [
                 "#00B000",
@@ -140,7 +140,7 @@ $(document).ready(function() {
                         var allData = data.datasets[tooltipItem.datasetIndex].data;
                         var tooltipLabel = data.labels[tooltipItem.index];
                         var tooltipData = allData[tooltipItem.index];
-                        var tooltipPercentage = Math.round(10000 * tooltipData / 5) / 100;
+                        var tooltipPercentage = Math.round(10000 * tooltipData / 16) / 100;
                         return tooltipLabel + ": " + tooltipData + " (" + tooltipPercentage + "%)";
                     }
                 }
@@ -153,8 +153,8 @@ $(document).ready(function() {
     var chartData = {
         datasets: [{
             data: [
-                   0,
-                   1
+                   1,
+                   0
                ],
                backgroundColor: [
                 "#00B000",
@@ -228,7 +228,7 @@ $(document).ready(function() {
   <tbody>
     <tr class="info">
       <td>No Name (add projectName to cucumber-reporting.properties)</td>
-      <td>28 Jul 2022, 17:07</td>
+      <td>29 Jul 2022, 16:19</td>
     </tr>
   </tbody>
 </table>
@@ -325,52 +325,52 @@ $(document).ready(function() {
       <tr>
         <td class="tagname"><a href="report-feature_3764830322.html">US_001 Login Functionality</a></td>
 
-        <td      class="passed"    >14</td>
-        <td      class="failed"    >1</td>
+        <td      class="passed"    >48</td>
         <td >0</td>
         <td >0</td>
         <td >0</td>
-        <td class="total">15</td>
+        <td >0</td>
+        <td class="total">48</td>
 
-        <td  class="passed"    >4</td>
-        <td  class="failed"    >1</td>
-        <td class="total">5</td>
+        <td  class="passed"    >16</td>
+        <td >0</td>
+        <td class="total">16</td>
 
-        <td class="duration" data-value="59448064900">59.448</td>
-        <td class="failed">Failed</td>
+        <td class="duration" data-value="16959400">0.016</td>
+        <td class="passed">Passed</td>
       </tr>
   </tbody>
 
   <tfoot class="total">
     <tr>
       <td></td>
-      <td>14</td>
-      <td>1</td>
+      <td>48</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>15</td>
+      <td>0</td>
+      <td>48</td>
 
-      <td>4</td>
-      <td>1</td>
-      <td>5</td>
+      <td>16</td>
+      <td>0</td>
+      <td>16</td>
 
-      <td class="duration">59.448</td>
+      <td class="duration">0.016</td>
       <td>1</td>
     </tr>
     <tr>
       <td></td>
-      <td>93.33%</td>
-      <td>6.67%</td>
+      <td>100.00%</td>
+      <td>0.00%</td>
       <td>0.00%</td>
       <td>0.00%</td>
       <td>0.00%</td>
       <td></td>
-      <td>80.00%</td>
-      <td>20.00%</td>
-      <td></td>
-      <td></td>
+      <td>100.00%</td>
       <td>0.00%</td>
+      <td></td>
+      <td></td>
+      <td>100.00%</td>
     </tr>
   </tfoot>
 </table>

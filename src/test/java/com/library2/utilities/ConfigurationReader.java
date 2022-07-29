@@ -33,8 +33,8 @@ public class ConfigurationReader {
 
     //3.
     public static String getProperty(String keyName){
-        return properties.getProperty(keyName);
-    }
+                    return properties.getProperty(keyName);
+                }
 
 
 }
