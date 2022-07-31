@@ -1,4 +1,5 @@
-@wip @Login @smoke
+@wip @Login
+@smoke @regression
 Feature: US_001 Login Functionality
 
   User Story: Login Functionality
@@ -61,11 +62,18 @@ Feature: US_001 Login Functionality
           | Student1   |
           | Student2   |
 
-#  # 6. Login with wrong username and correct password
-#  @us001_t06
-#  Scenario: US001_T06_Login_with_wrongUsername_corPassword
-#    When  user input wrong_username with wrong_password
-#    Then  user should  see message "<Sorry, Wrong Email or Password>"
+  # 6. Login with wrong username and correct password
+  @us001_t06
+  Scenario: US001_T06_Login_with_wrongUsername_corPassword
+    When  user input wrong_username with wrong_password
+    Then  user should see message "Please enter a valid email address."
+
+
+  # 7. Login with NULL username and NULL password
+  @us001_t06
+  Scenario: US001_T07_Login_with_nullUsername_nullPassword
+    When  user input NULL username with NULL password
+    Then  user should see warning message <This field is required.>
 
 
 

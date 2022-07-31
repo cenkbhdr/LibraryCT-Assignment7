@@ -14,7 +14,8 @@ public class Login_LibraryPage extends BasePage{
     //------------------------------------------------------------//
 
     /** 0. Global objects: */
-    BasePage basePage = new BasePage();
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 15 );
+
 
 
     //------------------------------------------------------------//
@@ -28,34 +29,57 @@ public class Login_LibraryPage extends BasePage{
     //------------------------------------------------------------//
     /** 2. WebElements: */
 
+    //usernameBox, by Alex
     @FindBy(xpath = "//div[@class='form-label-group']//input[@id='inputEmail']")
     public WebElement usernameBox;
 
+        //label for usernameBox, by Alex
+        @FindBy(xpath = "//div[@class='form-label-group']/label[@for='inputEmail']")
+        public WebElement label_usernameBox;
+
+    //passwordBox, by Alex
     @FindBy(xpath = "//div[@class='form-label-group']//input[@id='inputPassword']")
     public WebElement passwordBox;
 
+        //label for passwordBox, by Alex
+        @FindBy(xpath = "//div[@class='form-label-group']/label[@for='inputPassword']")
+        public WebElement label_passwordBox;
+
+    //sign in button, by Alex
     @FindBy(xpath = "//button[@class='btn btn-lg btn-primary btn-block']")
     public WebElement signInBtn;
 
+
+    // *** Messages ***
+
+    //message - Sorry, Wrong Email or Password, by Alex
     @FindBy(xpath = "//div[@class='alert alert-danger' and contains (. , 'Sorry, Wrong Email or Password')]")
     public WebElement message_WrongEmail_Or_Password;
 
-    @FindBy(xpath = "//div[@id='inputEmail-error' and contains (. , 'This field is required.')]")
+    //message for empty email - This field is required, by Alex
+    @FindBy(xpath = "//div[@class='alert alert-danger']//div[@id='inputEmail-error' and contains (. , 'This field is required')]")
     public WebElement message_requiredEmail;
 
-    @FindBy(xpath = "//div[@id='inputPassword-error' and contains (. , 'This field is required.')]")
+    //message for not valid email - Please enter a valid email address., by Alex
+    @FindBy(xpath = "//div[@class='alert alert-danger']//div[@id='inputEmail-error' and contains (. , 'Please enter a valid email address')]")
+    public WebElement message_enterValidEmail;
+
+    // message for empty password - This field is required, by Alex
+    @FindBy(xpath = "//div[@class='alert alert-danger']//div[@id='inputPassword-error' and contains (. , 'This field is required')]")
     public WebElement message_requiredPassword;
 
+    // message for empty password - This field is required, by Alex
+    @FindBy(xpath = "//div[@class='alert alert-danger']")
+    public WebElement message_neutralTag;
 
     //------------------------------------------------------------//
+
+
     /** 3. Methods: ======================================== */
-    //3.0. Global objects for methods
     //3.1. Action Methods
     //3.2. Assertion Methods
     //3.3. Helping Methods
 
-    /** 3.0. Global objects for methods */
-    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 15 );
 
     /**------------------------------------------------------*/
     /** 3.1. Action Methods */
@@ -65,6 +89,20 @@ public class Login_LibraryPage extends BasePage{
 
     /**------------------------------------------------------*/
     /** 3.2. Assertion Methods */
+
+    public void assert_ifMatching_WarnMessage_EnterValidEmail(String message) {
+        String act_warningMessage = message_enterValidEmail.getText();
+
+        Assert.assertEquals(
+                "The warning message does NOT matching to expected message - FAIL!",
+                message,
+                act_warningMessage
+        );
+    }
+
+    //-------------------------------------------------------------------------------
+
+
 
 
     /**------------------------------------------------------*/
@@ -86,6 +124,7 @@ public class Login_LibraryPage extends BasePage{
     }
 
     //-------------------------------------------------------------------------------
+
 
     // This method used for login with credentials used from scenario outline
     // created by Alex S.
@@ -121,7 +160,9 @@ public class Login_LibraryPage extends BasePage{
         //3. click() on sign in button
             signInBtn.click();
     }
+
     //-------------------------------------------------------------------------------
+
 
     public void input_correct_username(String cor_username_) {
         //1. clear the usernameBox
@@ -145,6 +186,7 @@ public class Login_LibraryPage extends BasePage{
             }
     }
 
+    //-------------------------------------------------------------------------------
 
 
 
