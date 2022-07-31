@@ -8,6 +8,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BooksPage {
 
+
+    /** 0. Global objects: */
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 15 );
+
+
+
+    //------------------------------------------------------------//
     /** 1. Initialization of this page */
     public BooksPage(){
         PageFactory.initElements(Driver.getDriver(), this);
@@ -16,6 +23,7 @@ public class BooksPage {
 
     //------------------------------------------------------------//
     /** 2. WebElements: */
+
 
     @FindBy(xpath = "//section[@id='books']//div[@class='portlet-title']//h3[.='Book Management']")
     public WebElement booksContainerName;
@@ -33,11 +41,31 @@ public class BooksPage {
     public WebElement table_books;
 
 
-
     //------------------------------------------------------------//
-    /** 3. Methods: */
 
-    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+
+    /** 3. Methods: ======================================== */
+    //3.1. Action Methods
+    //3.2. Assertion Methods
+    //3.3. Helping Methods
+
+
+    /**------------------------------------------------------*/
+    /** 3.1. Action Methods */
+
+
+
+
+    /**------------------------------------------------------*/
+    /** 3.2. Assertion Methods */
+
+
+
+
+    /**------------------------------------------------------*/
+    /** 3.3. Helping Methods */
+
+
 
 
 }

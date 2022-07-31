@@ -56,8 +56,6 @@ public class US001_LoginFunctionality_StDf {
         loginLibraryPage.login_from_scenario_outline(username, password);
     }
 
-
-
     @Then("user should navigate to Dashboard page as Librarian")
     public void user_Should_Navigate_To_DashboardPage_AsLibrarian() {
         //4. assert the title is Dashboard
@@ -91,6 +89,7 @@ public class US001_LoginFunctionality_StDf {
         //5. assert if dropdown has the student credentials
         loginLibraryPage.assert_if_student_is_loggedIn();
     }
+
 
 
     /**
@@ -155,20 +154,76 @@ public class US001_LoginFunctionality_StDf {
 
     }
 
-
     @Then("user should see message <Sorry, Wrong Email or Password>")
     public void user_Should_See_Message__SorryWrongEmailOrPassword() {
         //3. click sign in button
             loginLibraryPage.signInBtn.click();
         //4. assert if message is displayed
-        wait.until(ExpectedConditions.visibilityOf(loginLibraryPage.message_WrongEmail_Or_Password));
-        Assert.assertTrue(loginLibraryPage.message_WrongEmail_Or_Password.isDisplayed());
+            wait.until(ExpectedConditions.visibilityOf(loginLibraryPage.message_WrongEmail_Or_Password));
+            Assert.assertTrue(loginLibraryPage.message_WrongEmail_Or_Password.isDisplayed());
 
     }
 
+  
+
     /**
-     *
+     *  # 6. Login with wrong username and correct password
+     *   @us001_t06
+     *   Scenario: US001_T06_Login_with_wrongUsername_corPassword
+     *     When  user input wrong_username with wrong_password
+     *     Then  user should  see message "<Sorry, Wrong Email or Password>"
      */
+    @When("user input wrong_username with wrong_password")
+    public void userInputWrong_usernameWithWrong_password() {
+        //1. input correct username
+            loginLibraryPage.usernameBox.clear();
+            loginLibraryPage.usernameBox.sendKeys(faker.letterify("%%%%%%%@%%%%%%.com"));
+
+        //2. input fake password
+            loginLibraryPage.passwordBox.clear();
+            loginLibraryPage.passwordBox.sendKeys(faker.letterify("%%%%%%%%%%%%%%"));
+
+        //3. click sign in button
+            loginLibraryPage.signInBtn.click();
+
+    }
+
+    @Then("user should see message {string}")
+    public void userShouldSeeMessage(String message) {
+        //4. Assert
+            //4.1. assert if message is displayed
+            Assert.assertTrue(loginLibraryPage.message_enterValidEmail.isDisplayed());
+
+        //4.2. assert if warning message is correct
+            loginLibraryPage.assert_ifMatching_WarnMessage_EnterValidEmail(message);
+    }
+
+
+    /**
+     *   # 7. Login with NULL username and NULL password
+     *   @us001_t07
+     *   Scenario: US001_T07_Login_with_nullUsername_nullPassword
+     *     When  user input NULL username with NULL password
+     *     Then  user should see 3 warning messages
+     */
+
+    @When("user input NULL username with NULL password")
+    public void userInputNULLUsernameWithNULLPassword() {
+        //1. input NULL username
+            loginLibraryPage.usernameBox.clear();
+
+        //2. input NULL password
+            loginLibraryPage.passwordBox.clear();
+
+        //3. click sign in button
+            loginLibraryPage.signInBtn.click();
+    }
+
+    @Then("user should see warning message <This field is required.>")
+    public void user_Should_See_Warning_Message_ThisField_isRequired() throws InterruptedException {
+        //4. Assert if message <This field is required.> is displayed
+            Assert.assertTrue(loginLibraryPage.message_requiredEmail.isDisplayed());
+    }
 
 
 }
