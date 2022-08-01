@@ -94,11 +94,10 @@ public class US002_Librarian_adding_newUser_StDf {
         Thread.sleep(2000);
         //6. Click on save changes button
         usersPage.btn_saveChanges.click();
-        Thread.sleep(8000);
     }
 
-    @Then("new user should appear on the grid table")
-    public void new_user_should_appear_on_the_grid_table() {
+    @Then("new librarian user should appear on the grid table")
+    public void new_librarian_user_should_appear_on_the_grid_table() {
         //7. assert if new librarian user added on grid table
         wait.until(ExpectedConditions.visibilityOf(usersPage.tableGrid));
         wait.until(ExpectedConditions.visibilityOf(usersPage.tableGrid_UserID_module));
@@ -124,10 +123,67 @@ public class US002_Librarian_adding_newUser_StDf {
                 exp_userStatus ,
                 act_userStatus
         );
+    }
 
 
+    /**
+     *   @us002_t04
+     *   Scenario: US002_T04_Librarian_adds_new_Student_user
+     *     When  Librarian inputs all data for new Student user
+     *     Then  new user should appear on the grid table
+     */
+    @When("Librarian inputs all data for new Student user")
+    public void librarianInputsAllDataForNewStudentUser() throws InterruptedException {
+        //4. click on add user button - I am located in users page now
+        usersPage.btn_addUser.click();
+
+        //5. Input data for new librarian user
+        usersPage.inputBox_fullName.sendKeys(faker.name().fullName());
+        usersPage.inputBox_password.sendKeys(faker.internet().password());
+        usersPage.inputBox_email.sendKeys(faker.internet().emailAddress());
+        usersPage.dropdown_userGroup.click();
+        Select select1 = new Select(usersPage.dropdown_userGroup);
+        select1.selectByVisibleText("Students");
+        usersPage.dropdown_status.click();
+        Select select2 = new Select(usersPage.dropdown_status);
+        select2.selectByVisibleText("ACTIVE");
+        usersPage.inputBox_address.sendKeys(faker.address().fullAddress());
+
+        Thread.sleep(2000);
+        //6. Click on save changes button
+        usersPage.btn_saveChanges.click();
 
     }
+
+    @Then("new student user should appear on the grid table")
+    public void newStudentUserShouldAppearOnTheGridTable() {
+        //7. assert if new librarian user added on grid table
+        wait.until(ExpectedConditions.visibilityOf(usersPage.tableGrid));
+        wait.until(ExpectedConditions.visibilityOf(usersPage.tableGrid_UserID_module));
+//        usersPage.tableGrid_UserID_module.click();
+//        usersPage.tableGrid_UserID_module.click();
+
+        //7.1. Assert for librarian data group
+        wait.until(ExpectedConditions.visibilityOf(usersPage.tableGrid_data_Group));
+        String act_userGroup = usersPage.tableGrid_data_Group.getText();
+        String exp_userGroup = "Students";
+        Assert.assertEquals(
+                "Group type does not match - FAIL!",
+                exp_userGroup,
+                act_userGroup
+        );
+
+        //7.2. Assert for librarian data status
+        wait.until(ExpectedConditions.visibilityOf(usersPage.tableGrid_data_Status));
+        String act_userStatus = usersPage.tableGrid_data_Status.getText();
+        String exp_userStatus = "ACTIVE";
+        Assert.assertEquals(
+                "Group type does not match - FAIL!",
+                exp_userStatus ,
+                act_userStatus
+        );
+    }
+
 
 
 
