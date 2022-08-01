@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class US002_Librarian_adding_newUser_StDf {
 
-    //Global objects
+    /** Global objects: */
     Login_LibraryPage loginLibraryPage = new Login_LibraryPage();
     BasePage basePage = new BasePage();
     UsersPage usersPage = new UsersPage();
