@@ -16,9 +16,10 @@ import org.junit.runner.RunWith;
             features = "src/test/resources/features" , // from content
             glue = "com/library2/step_definitions" , //from source root
 
-            dryRun = false,
-            tags = "@us002_t03"
-               ,
+            dryRun = false
+                ,
+            tags = "@smoke"
+                ,
                 publish = true
     )
 
