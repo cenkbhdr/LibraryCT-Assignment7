@@ -64,9 +64,9 @@ Feature: US_001 Login Functionality
 
   # 6. Login with wrong username and correct password
   @us001_t06
-  Scenario: US001_T06_Login_with_wrongUsername_corPassword
+  Scenario: US001_T06_Login_with_wrongUsername_wrongPassword
     When  user input wrong_username with wrong_password
-    Then  user should see message "Please enter a valid email address."
+    Then  user should see message "Sorry, Wrong Email or Password"
 
 
   # 7. Login with NULL username and NULL password
