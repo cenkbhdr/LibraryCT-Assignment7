@@ -70,10 +70,15 @@ Feature: US_001 Login Functionality
 
 
   # 7. Login with NULL username and NULL password
-  @us001_t06
+  @us001_t07
   Scenario: US001_T07_Login_with_nullUsername_nullPassword
     When  user input NULL username with NULL password
     Then  user should see warning message <This field is required.>
 
 
+  # 8. Login with parameters
+  @us001_t07
+  Scenario: US001_T08_Loged_with_parameters
+    When  user input NULL username with NULL password
+    Then  user should see warning message <This field is required.>
 
