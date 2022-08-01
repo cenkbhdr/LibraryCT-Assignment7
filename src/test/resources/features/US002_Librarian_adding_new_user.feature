@@ -26,10 +26,14 @@ Feature: US_002 Librarian adding new user
     Then  new librarian user should appear on the grid table
 
 
+
   @us002_t04
   Scenario: US002_T04_Librarian_adds_new_Student_user
     When  Librarian inputs all data for new Student user
     Then  new student user should appear on the grid table
+
+
+
 
 
 

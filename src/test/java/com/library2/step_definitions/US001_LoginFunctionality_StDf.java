@@ -191,11 +191,13 @@ public class US001_LoginFunctionality_StDf {
     @Then("user should see message {string}")
     public void userShouldSeeMessage(String message) {
         //4. Assert
-            //4.1. assert if message is displayed
-            Assert.assertTrue(loginLibraryPage.message_enterValidEmail.isDisplayed());
+        wait.until(ExpectedConditions.visibilityOf(loginLibraryPage.message_WrongEmail_Or_Password));
+
+        //4.1. assert if message is displayed
+            Assert.assertTrue(loginLibraryPage.message_WrongEmail_Or_Password.isDisplayed());
 
         //4.2. assert if warning message is correct
-            loginLibraryPage.assert_ifMatching_WarnMessage_EnterValidEmail(message);
+            loginLibraryPage.assert_ifMatching_WarnMessage_WrongEmail_orPassword(message);
     }
 
 
