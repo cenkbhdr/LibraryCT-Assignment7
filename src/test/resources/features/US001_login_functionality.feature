@@ -77,7 +77,7 @@ Feature: US_001 Login Functionality
 
 
   # 8. Login with parameters
-  @us001_t07
+  @us001_t08
   Scenario: US001_T08_Loged_with_parameters
     When  user input NULL username with NULL password
     Then  user should see warning message <This field is required.>
