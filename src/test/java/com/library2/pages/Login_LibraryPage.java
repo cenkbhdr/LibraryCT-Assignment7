@@ -91,6 +91,8 @@ public class Login_LibraryPage extends BasePage{
     /** 3.2. Assertion Methods */
 
     public void assert_ifMatching_WarnMessage_EnterValidEmail(String message) {
+        wait.until(ExpectedConditions.visibilityOf(message_enterValidEmail));
+
         String act_warningMessage = message_enterValidEmail.getText();
 
         Assert.assertEquals(
@@ -102,6 +104,19 @@ public class Login_LibraryPage extends BasePage{
 
     //-------------------------------------------------------------------------------
 
+    public void assert_ifMatching_WarnMessage_WrongEmail_orPassword(String message) {
+        wait.until(ExpectedConditions.visibilityOf(message_WrongEmail_Or_Password));
+
+        String act_warningMessage = message_WrongEmail_Or_Password.getText();
+
+        Assert.assertEquals(
+                "The warning message does NOT matching to expected message - FAIL!",
+                message,
+                act_warningMessage
+        );
+    }
+
+    //-------------------------------------------------------------------------------
 
 
 
