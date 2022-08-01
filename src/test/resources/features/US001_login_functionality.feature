@@ -62,7 +62,7 @@ Feature: US_001 Login Functionality
           | Student1   |
           | Student2   |
 
-  # 6. Login with wrong username and correct password
+  # 6. Login with wrong username and wrong password
   @us001_t06
   Scenario: US001_T06_Login_with_wrongUsername_wrongPassword
     When  user input wrong_username with wrong_password
