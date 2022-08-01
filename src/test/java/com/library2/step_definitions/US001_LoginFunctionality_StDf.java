@@ -147,10 +147,10 @@ public class US001_LoginFunctionality_StDf {
     @When("user input cor_username with wrong_password for {string}")
     public void userInput_Cor_username_With_Wrong_passwordFor(String cor_username) {
         //1. input correct username
-        loginLibraryPage.input_correct_username(cor_username);
+            loginLibraryPage.input_correct_username(cor_username);
 
         //2. input fake password
-        loginLibraryPage.passwordBox.sendKeys(faker.letterify("%%%%%%%%%%%%%%"));
+            loginLibraryPage.passwordBox.sendKeys(faker.letterify("%%%%%%%%%%%%%%"));
 
     }
 
@@ -177,16 +177,16 @@ public class US001_LoginFunctionality_StDf {
     public void userInputWrong_usernameWithWrong_password() {
         //1. input correct username
             loginLibraryPage.usernameBox.clear();
-            loginLibraryPage.usernameBox.sendKeys(faker.letterify("%%%%%%%@%%%%%%.com"));
+            loginLibraryPage.usernameBox.sendKeys(faker.internet().emailAddress());
 
         //2. input fake password
             loginLibraryPage.passwordBox.clear();
-            loginLibraryPage.passwordBox.sendKeys(faker.letterify("%%%%%%%%%%%%%%"));
+              loginLibraryPage.passwordBox.sendKeys(faker.internet().password());
 
         //3. click sign in button
-            loginLibraryPage.signInBtn.click();
+        loginLibraryPage.signInBtn.click();
 
-    }
+}
 
     @Then("user should see message {string}")
     public void userShouldSeeMessage(String message) {
@@ -197,6 +197,7 @@ public class US001_LoginFunctionality_StDf {
         //4.2. assert if warning message is correct
             loginLibraryPage.assert_ifMatching_WarnMessage_EnterValidEmail(message);
     }
+
 
 
     /**
