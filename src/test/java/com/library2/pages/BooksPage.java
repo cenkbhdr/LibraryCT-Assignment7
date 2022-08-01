@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class DashboardPage {
+public class BooksPage {
 
 
     /** 0. Global objects: */
@@ -16,7 +16,7 @@ public class DashboardPage {
 
     //------------------------------------------------------------//
     /** 1. Initialization of this page */
-    public DashboardPage(){
+    public BooksPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -24,17 +24,21 @@ public class DashboardPage {
     //------------------------------------------------------------//
     /** 2. WebElements: */
 
-    // container for users on page body, by Alex
-    @FindBy(xpath = "//section[@id='dashboard']//div[@class='col-md-6 col-lg-4']//h2[@id='user_count']")
-    public WebElement userContainer;
 
-    // container for books on page body, by Alex
-    @FindBy(xpath = "//section[@id='dashboard']//div[@class='col-md-6 col-lg-4']//h2[@id='book_count']")
-    public WebElement booksContainer;
+    @FindBy(xpath = "//section[@id='books']//div[@class='portlet-title']//h3[.='Book Management']")
+    public WebElement booksContainerName;
 
-    // container for borrowed books on page body, by Alex
-    @FindBy(xpath = "//section[@id='dashboard']//div[@class='col-md-6 col-lg-4']//h2[@id='borrowed_books']")
-    public WebElement booksBorrowedContainer;
+    @FindBy(xpath = "//section[@id='books']//div[@class='form-group']//select[@id='book_categories']")
+    public WebElement dropdown_BooksCategories;
+
+    @FindBy(xpath = "//section[@id='books']//div[@id='tbl_books_wrapper']//select[@name='tbl_books_length']")
+    public WebElement dropdown_ShowingRecords;
+
+    @FindBy(xpath = "//div[@id='tbl_books_wrapper']//div[@id='tbl_books_filter']//input[@type='search']")
+    public WebElement searchBox;
+
+    @FindBy(xpath = "//div[@id='tbl_books_wrapper']//table[@id='tbl_books']")
+    public WebElement table_books;
 
 
     //------------------------------------------------------------//
