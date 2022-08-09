@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: US_001 Login Functionality
+-------------------------------------------------------------------------------
+Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 275.892 s - in US_001 Login Functionality

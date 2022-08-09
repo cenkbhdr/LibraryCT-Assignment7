@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: US_002 Librarian adding new user
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 95.523 s - in US_002 Librarian adding new user
