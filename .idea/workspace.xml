@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cca5c138-9d3a-4714-88c4-03e1379a34da" name="Changes" comment="FailedClassRunner class updated:&#10;glue been corrected">
-      <change afterPath="$PROJECT_DIR$/history_Creating_Framework" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/history" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/library2/runner/FailedClassRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/library2/runner/FailedClassRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/library2/utilities/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/library2/utilities/Driver.java" afterDir="false" />
+    <list default="true" id="cca5c138-9d3a-4714-88c4-03e1379a34da" name="Changes" comment="1. updated gitignore file, Driver class, FailedClassRunner class&#10;2. added and corrected plugins for parallel testing in pom.xml&#10;3. changed the history_creating_Framework file&#10;&#10;PS: in Driver class- changed the object from driver into driverPool">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +135,7 @@
       <workItem from="1659655693948" duration="741000" />
       <workItem from="1659720025133" duration="608000" />
       <workItem from="1659733044335" duration="1521000" />
-      <workItem from="1660067802778" duration="3112000" />
+      <workItem from="1660067802778" duration="4117000" />
     </task>
     <task id="LOCAL-00001" summary="Alex commit">
       <created>1659035654206</created>
@@ -323,7 +319,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659733159274</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="1. updated gitignore file, Driver class, FailedClassRunner class&#10;2. added and corrected plugins for parallel testing in pom.xml&#10;3. changed the history_creating_Framework file&#10;&#10;PS: in Driver class- changed the object from driver into driverPool">
+      <created>1660076606700</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1660076606700</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,6 +372,7 @@
     <MESSAGE value="55" />
     <MESSAGE value="US003 starting" />
     <MESSAGE value="FailedClassRunner class updated:&#10;glue been corrected" />
-    <option name="LAST_COMMIT_MESSAGE" value="FailedClassRunner class updated:&#10;glue been corrected" />
+    <MESSAGE value="1. updated gitignore file, Driver class, FailedClassRunner class&#10;2. added and corrected plugins for parallel testing in pom.xml&#10;3. changed the history_creating_Framework file&#10;&#10;PS: in Driver class- changed the object from driver into driverPool" />
+    <option name="LAST_COMMIT_MESSAGE" value="1. updated gitignore file, Driver class, FailedClassRunner class&#10;2. added and corrected plugins for parallel testing in pom.xml&#10;3. changed the history_creating_Framework file&#10;&#10;PS: in Driver class- changed the object from driver into driverPool" />
   </component>
 </project>
