@@ -1,0 +1,279 @@
+1. Add dependencies into pom.xml file:
+    - Selenium java, 3.141.59
+    - WebdriverManager, 5.1.1
+    - Javafaker, 1.0.2
+    - Cucumber-java, 7.2.3
+    - Cucumber-junit, 7.2.3
+    - Reporting plugin, 7.2.0
+
+2. Add build plugins into pom.xml file for parallel testing
+
+3. Create gitignore file under the project and add hided content
+    /target/
+    /.idea/
+    /.iml/
+    /out/
+    /.xml/
+
+4. Enable version control integration to GitHub
+
+5. Share the project to the repository on GitHub
+
+6. Create a new file configuration.properties under the project
+
+7. Add properties value to configuration.properties
+    browser=chrome
+    url_qa2=https://library2.cydeo.com/login.html
+
+    librarian_username=librarian1@library
+    librarian_password=qU9mrvur
+
+    student_username=student1@library
+    student_password=d5fv9BtX
+
+8. Create new package com.library2 under java package
+
+9. Create directory "resources" under test package and outside the java package
+
+10. Create new directory "features" under resources directory
+
+11. Create new package "utilities" under library2 package
+    11.1.  Driver class
+    11.2.  ConfigurationReader class
+    11.3.  BrowserUtil class
+
+12. Create new class "Driver" under utilities package
+    12.1.  Create a private constructor Driver()
+        private Driver() {    }
+    12.2.  Create a private and static InheritableThreadLocal<WebDriver> driverPool
+        private static InheritableThreadLocal<WebDriver> driverPool = new InheritableThreadLocal<>();
+    12.3.  Create reusable public static WebDriver getDriver()
+    12.4.  Create reusable public static WebDriver closeDriver()
+
+13.  Create new class "ConfigurationReader" under utilities package
+    13.1.  Create private static Properties object
+    13.2.  Create static block to run first
+    13.3.  Create public static getProperty()
+    13.4.  import java.util.Properties;
+
+14. Create new class "BrowserUtil" under utilities package
+    14.1.  Action methods
+    14.2.  Assertion methods
+    14.3.  Supporting methods
+
+15. Create new package "step_definitions" under library2 package
+
+16. Create new class "Hooks" under step_definitions package
+    16.1. Add Before scenario method
+    16.2. Add After scenario method with taking screenshot for failed scenarios
+
+17. Create new package "runner" under library2 package
+
+18. Create new class "CukesRunner" under runner package
+
+19. Create new class "FailedClassRunner" under runner package
+
+20. Add new package "pages" under library2 package
+
+21. Setup GitHub branches
+    21.1. Add TEMP branch
+    21.2. Add all necessary branches
+    21.3. Setup branch protection rule for the "master" branch
+    21.4. Add collaborates at settings
+
+
+
+
+
+
+
+=======================================================================================
+NOTES:
+
+
+-----------------------------------------------------------------------------
+
+/** Dependencies */
+
+    <dependencies>
+
+            <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-java</artifactId>
+                <version>3.141.59</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+            <dependency>
+                <groupId>io.github.bonigarcia</groupId>
+                <artifactId>webdrivermanager</artifactId>
+                <version>5.1.0</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+            <dependency>
+                <groupId>com.github.javafaker</groupId>
+                <artifactId>javafaker</artifactId>
+                <version>1.0.2</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-java</artifactId>
+                <version>7.2.3</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-junit</artifactId>
+                <version>7.2.3</version>
+
+                <scope>test</scope>
+
+            </dependency>
+
+            <dependency>
+                <groupId>me.jvt.cucumber</groupId>
+                <artifactId>reporting-plugin</artifactId>
+                <version>7.2.0</version>
+            </dependency>
+
+    </dependencies>
+
+-----------------------------------------------------------------------------
+
+/** Plugins */
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+
+                    <parallel>methods</parallel>
+                    <threadCount>4</threadCount>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <perCoreThreadCount>false</perCoreThreadCount>
+
+
+                    <includes>
+                        <include>*/Runner.java</include>
+                    </includes>
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+-----------------------------------------------------------------------------
+
+/**  Driver class */
+
+        /** 1. Creating a private constructor, we are closing access to the object of this class from outside the class */
+            private Driver() {    }
+
+        /** 2. Creating private InheritableThreadLocal<WebDriver> driverPool, to close access from outside this class */
+        //Make it static, to use it in static method
+            private static InheritableThreadLocal<WebDriver> driverPool = new InheritableThreadLocal<>();
+
+        /** 3. Re-usable utility method which will return same driverPool instance when we call it */
+            public static WebDriver getDriver() {
+                if (driverPool.get() == null) {
+
+                    String browserType = ConfigurationReader.getProperty("browser");
+
+                        switch (browserType) {
+                            case "chrome":
+                                WebDriverManager.chromedriver().setup();
+                                driverPool.set(new ChromeDriver());
+                                driverPool.get().manage().window().maximize();
+                                driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                                break;
+                            case "firefox":
+                                WebDriverManager.firefoxdriver().setup();
+                                driverPool.set(new FirefoxDriver());
+                                driverPool.get().manage().window().maximize();
+                                driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                                break;
+                            case "opera":
+                                WebDriverManager.operadriver().setup();
+                                driverPool.set(new OperaDriver());
+                                driverPool.get().manage().window().maximize();
+                                driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                                break;
+                            case "edge":
+                                WebDriverManager.edgedriver().setup();
+                                driverPool.set(new EdgeDriver());
+                                driverPool.get().manage().window().maximize();
+                                driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                                break;
+                            case "safari":
+                                WebDriverManager.safaridriver().setup();
+                                driverPool.set(new SafariDriver());
+                                driverPool.get().manage().window().maximize();
+                                driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                                break;
+
+                        }
+                }
+
+                return driverPool.get();
+
+            }
+
+        /** 4. Re-usable utility method which will make sure our driver value is always null after using quit() method */
+            public static void closeDriver(){
+                if(driverPool.get() != null){
+                    driverPool.get().quit(); // this line will terminate the existing driver session. with using this driver will not be even null
+                    driverPool.remove();
+                }
+
+            }
+
+-----------------------------------------------------------------------------
+
+/** CuckesRunner class */
+
+    @RunWith(Cucumber.class)
+        @CucumberOptions(
+                   plugin = {
+                                "pretty" ,
+                                "html:target/cucumber-report.html",
+                                "json:target/cucumber.json",
+                                "rerun:target/rerun.txt" ,
+                                "me.jvt.cucumber.report.PrettyReports:target/cucumber"
+                        } ,
+                        features = "src/test/resources/features" , // from content
+                        glue = "com/library2/step_definitions" , //from source root
+
+                        dryRun = false
+                            ,
+                        tags = "@smoke"
+                            ,
+                            publish = true
+                )
+
+                public class CukesRunner {  }
+
+-----------------------------------------------------------------------------
+
+/** FailedClassRunner class */
+
+      @RunWith(Cucumber.class)
+        @CucumberOptions(
+            features = "@target/rerun.txt",
+            glue="com/libray2/step_definitions"
+
+        )
+
+
+    public class FailedClassRunner {    }
+
+-----------------------------------------------------------------------------
+
+=======================================================================================

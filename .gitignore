@@ -1,7 +1,8 @@
-/target/
-.idea
-*.iml
-.xml
+ /target/
+  /.idea/
+  /.iml/
+  /out/
+  /.xml/
 
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
